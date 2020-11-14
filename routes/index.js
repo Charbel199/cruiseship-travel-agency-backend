@@ -19,6 +19,29 @@ router
   .post(customerControllerObject.isLoggedIn, customerControllerObject.logout);
 
 
+//Cruiseships
+router.route("/cruiseships").get(); 
+
+router.route("/cruisehips/:shipId").get();
+
+router.route("/rooms/:roomId").get(); //Join with roomPlan
+
+router.route("/cruiseships/:shipId/crewmembers").get();
+
+router.route("/cruisehips/:shipId/rating").get();
+
+router.route("/cruisehips/:shipId/travelplans").get();
+
+
+//TravelPlans
+
+router.route("/travelplans/:travelPlanId").get(); //Gets travel plan details + stops
+
+router.route("/stops/:stopId").get();
+
+router.route("/travelplan/:travelPlanId/rating").get();
+
+
 
 
 

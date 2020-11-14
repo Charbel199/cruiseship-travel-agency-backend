@@ -1,5 +1,5 @@
 const { Customer } = require('../model/Customer');
-function createCustomerMap(body){
+module.exports.createCustomerMap = function createCustomerMap(body){
     var customer = new Customer(
         body.customerId,
         body.customerFirstName, 
@@ -14,4 +14,18 @@ function createCustomerMap(body){
         return customer;
 }
 
-module.exports.createCustomerMap = createCustomerMap;
+module.exports.createCruiseShipMap = function createCruiseShipMap(body){
+    var cruiseShip = new CruiseShip(
+        body.shipId,
+        body.shipName,
+        body.shipEntertainmentInfo,
+        body.shipNumberOfFloors,
+        body.shipTonnage,
+        body.shipSpeed,
+        body.shipVolume,
+        body.shipNumberOfRooms,
+        body.shipCrewCapacity,
+        body.shipPictureURL
+    )
+        return cruiseShip;
+}
