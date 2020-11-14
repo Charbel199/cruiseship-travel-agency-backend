@@ -1,8 +1,8 @@
-const { registerService } = require("../service/registerService");
+const { customerService } = require("../service/customerService");
 const { createResponse } = require("../response");
 const { Customer } = require('../model/Customer');
-const { createCustomerMap } = require('./../mapper/CustomerMapper');
-class registerController {
+const { createCustomerMap } = require('../mapper/CustomerMapper');
+class customerController {
   constructor() {}
 
   async register(req, res, next) {
@@ -10,12 +10,9 @@ class registerController {
       console.log("Registering ...");
       var customer = createCustomerMap(req);
 
-
-      var customerReturned = await registerService.register(customer);
+      var customerReturned = await customerService.register(customer);
+      //Login:
       req.session.userId = customer.customerId;
-
-      console.log("Customer registered: ");
-      console.log(customer);
 
       createResponse(res, 201, "Successfully registered", {
         customer
@@ -26,4 +23,4 @@ class registerController {
   }
 }
 
-module.exports.registerController = registerController;
+module.exports.customerController = customerController;

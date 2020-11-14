@@ -4,12 +4,12 @@ POST http://localhost:8080/register
 Content-Type: application/json
 
 {
-    "customerFirstName":"Jean",
-    "customerLastName":"Bou Maroun",
+    "customerFirstName":"Michael",
+    "customerLastName":"mayer",
     "customerDateOfBirth":"2000",
     "customerGender":"M",
     "customerAddress":"Fanar",
     "customerTelephoneNumber":"03532816",
-    "customerEmail":"charbel-boumaroun@outlook.com",
+    "customerEmail":"charbel-boumaroun@gmail.com",
     "customerPassword":"password"
 }
