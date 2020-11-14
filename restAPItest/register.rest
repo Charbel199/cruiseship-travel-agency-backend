@@ -10,6 +10,21 @@ Content-Type: application/json
     "customerGender":"M",
     "customerAddress":"Fanar",
     "customerTelephoneNumber":"03532816",
+    "customerEmail":"jeans-paulss@gmail.com",
+    "customerPassword":"password"
+}
+
+### Login User
+
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
     "customerEmail":"charbel-boumaroun@gmail.com",
     "customerPassword":"password"
 }
+
+
+### Logout User
+
+POST http://localhost:8080/logout

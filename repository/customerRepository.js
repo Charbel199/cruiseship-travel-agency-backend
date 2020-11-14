@@ -28,6 +28,7 @@ class customerRepository {
       throw new ErrorHandler(400, "Coudn't register");
     }
   }
+
   static async getCustomer(customer) {
     try {
       const [rows, fields] = await pool.query(
@@ -38,6 +39,8 @@ class customerRepository {
       throw new ErrorHandler(400, "Couldn't check customer in Db");
     }
   }
+
+  
 
 
       

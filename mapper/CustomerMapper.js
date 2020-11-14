@@ -1,15 +1,15 @@
 const { Customer } = require('../model/Customer');
-function createCustomerMap(req){
+function createCustomerMap(body){
     var customer = new Customer(
-        req.body.customerId,
-        req.body.customerFirstName, 
-        req.body.customerLastName, 
-        req.body.customerDateOfBirth, 
-        req.body.customerGender, 
-        req.body.customerAddress, 
-        req.body.customerTelephoneNumber, 
-        req.body.customerEmail,
-        req.body.customerPassword
+        body.customerId,
+        body.customerFirstName, 
+        body.customerLastName, 
+        body.customerDateOfBirth, 
+        body.customerGender, 
+        body.customerAddress, 
+        body.customerTelephoneNumber, 
+        body.customerEmail,
+        body.customerPassword
     )
         return customer;
 }

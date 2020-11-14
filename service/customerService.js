@@ -2,8 +2,10 @@ const bcrypt = require("bcryptjs");
 const { customerRepository } = require("../repository/customerRepository");
 const { ErrorHandler } = require("../error");
 const { Customer } = require("../model/Customer");
-
+const { createCustomerMap } = require('../mapper/CustomerMapper');
 class customerService {
+  
+  
   static async register(customer) {
     try {
       
@@ -34,6 +36,37 @@ class customerService {
       throw exception;
     }
   }
+
+  static async login(customer) {
+    try {
+      if (!customer.customerEmail || !customer.customerPassword)
+        throw new ErrorHandler(400, "Bad login format");
+
+
+
+      var customerFromDb = await customerRepository.getCustomer(customer);
+
+      //User not found:
+      if (customerFromDb.length == 0) {
+        throw new ErrorHandler(404, "User not found");
+      }
+
+      //Compare password:
+      if (bcrypt.compareSync(customer.customerPassword, customerFromDb[0].customerPassword)) {
+        var customerToReturn = createCustomerMap(customerFromDb[0]);
+
+        return customerToReturn;
+      } else {
+        throw new ErrorHandler(400, "Wrong password");
+      }
+    } catch (exception) {
+      throw exception;
+    }
+  }
+
+
+
+  
 }
 module.exports.customerService = customerService;
 
