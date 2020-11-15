@@ -37,6 +37,11 @@ router.route("/rooms/:roomId").get(
   cruiseShipControllerObject.getRoompById
 ); //Join with roomPlan
 
+
+
+
+
+
 router.route("/cruiseships/:shipId/crewmembers").get(
   cruiseShipControllerObject.getCrewMemberByShipId
 );

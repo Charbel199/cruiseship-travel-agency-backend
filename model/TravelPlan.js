@@ -1,16 +1,14 @@
 class TravelPlan {
 
-    constructor(travelPlanId, travelPlanDescription, travelPlanRegion, travelPlanPrice) {
+    constructor(travelPlanId, travelPlanDescription, travelPlanRegion, travelPlanPrice, shipId, departureDate, returnDate) {
       
-      this.roomId = roomId;
-      this.roomFloor = roomFloor;
-      this.roomShipId = roomShipId;
-      this.roomCapacity = roomCapacity;
-      this.roomClass = roomClass;
-      this.roomInfo = roomInfo;
-      this.roomPrice = roomPrice;
-      this.roomPictureURL = roomPictureURL;
-  
+      this.travelPlanId = travelPlanId;
+      this.travelPlanDescription = travelPlanDescription;
+      this.travelPlanRegion = travelPlanRegion;
+      this.travelPlanPrice = travelPlanPrice;
+      this.shipId = shipId;
+      this.departureDate = departureDate;
+      this.returnDate = returnDate;
     }
   
   }
