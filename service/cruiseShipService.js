@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 const { cruiseShipRepository } = require("../repository/cruiseShipRepository");
 const { ErrorHandler } = require("../error");
 const { CruiseShip } = require("../model/CruiseShip");
-const { createCruiseShipMap, createRoomMap, createTravelPlanMap, createCrewMemberMap } = require('../mapper/Mapper');
+const { createCruiseShipMap, createRoomMap, createTravelPlanMap, createCrewMemberMap, createCruiseShipRatingMap, createTravelPlanRatingMap } = require('../mapper/Mapper');
 class cruiseShipService {
   
   
@@ -94,6 +94,77 @@ class cruiseShipService {
       throw exception;
     }
   }
+
+
+  static async rateCruiseShip(customerId,shipId,rating) {
+    try {
+      var ratingResponse = await cruiseShipRepository.rateCruiseShipInDb(customerId,shipId,rating);
+
+
+      return ratingResponse;
+
+      
+      
+
+
+    } catch (exception) {
+      throw exception;
+    }
+  }
+  
+  static async getCruiseShipRatingByShipId(shipId) {
+    try {
+      var ratingsFromDb = await cruiseShipRepository.getCruiseShipRatingByShipIdFromDb(shipId);
+      var ratings = [];
+      for(var i=0;i<ratingsFromDb.length;i++)
+        ratings[i] = createCruiseShipRatingMap(ratingsFromDb[i]);
+
+      return ratings;
+
+      
+      
+
+
+    } catch (exception) {
+      throw exception;
+    }
+  }
+
+
+  static async rateTravelPlan(customerId,travelPlanId,rating) {
+    try {
+      var ratingResponse = await cruiseShipRepository.rateTravelPlanInDb(customerId,travelPlanId,rating);
+
+
+      return ratingResponse;
+
+      
+      
+
+
+    } catch (exception) {
+      throw exception;
+    }
+  }
+  
+  static async getTravelPlanRatingByTravelPlanId(travelPlanId) {
+    try {
+      var ratingsFromDb = await cruiseShipRepository.getTravelPlanRatingByTravelPlanIdFromDb(travelPlanId);
+      var ratings = [];
+      for(var i=0;i<ratingsFromDb.length;i++)
+        ratings[i] = createTravelPlanRatingMap(ratingsFromDb[i]);
+
+      return ratings; 
+
+      
+      
+
+
+    } catch (exception) {
+      throw exception;
+    }
+  }
+  
 
 }
 module.exports.cruiseShipService = cruiseShipService;

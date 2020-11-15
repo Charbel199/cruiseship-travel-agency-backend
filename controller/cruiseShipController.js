@@ -1,7 +1,8 @@
 const { cruiseShipService } = require("../service/cruiseShipService");
 const { createResponse } = require("../response");
 const { CruiseShip } = require('../model/CruiseShip');
-const { createCruiseShipMap } = require('../mapper/Mapper');
+const { createCruiseShipRatingMap } = require('../mapper/Mapper');
+const { createTravelPlanRatingMap } = require('../mapper/Mapper');
 const { ErrorHandler } = require("../error");
 
 class cruiseShipController {
@@ -71,12 +72,56 @@ class cruiseShipController {
 
   async rateCruiseShip(req, res, next) {
     try {
-      console.log("Getting the specific room ...");
+      console.log("Rating cruiseship ...");
+      req.body.cruiseShipId = req.params.shipId;
+      var rating = createCruiseShipRatingMap(req.body);
       //Map body to rating object
-
-      var crewMembers = await cruiseShipService.rateCruiseShip(req.session.customerId,req.params.shipId); // rating object instead of shipId
+    
+      await cruiseShipService.rateCruiseShip(req.session.customerId,req.params.shipId,rating); // rating object instead of shipId
       createResponse(res, 200, "Successfully rated the cruiseship", {
-        //Add rating object
+        rating
+      });
+    } catch (exception) {
+      next(exception);
+    }
+  }
+  async getCruiseShipRatingByShipId(req, res, next) {
+    try {
+      console.log("Getting ship ratings ...");
+
+
+      var ratings = await cruiseShipService.getCruiseShipRatingByShipId(req.params.shipId); // rating object instead of shipId
+      createResponse(res, 200, "Successfully fetched cruiseship ratings", {
+        ratings
+      });
+    } catch (exception) {
+      next(exception);
+    }
+  }
+
+  async rateTravelPlan(req, res, next) {
+    try {
+      console.log("Rating TravelPlan ...");
+      req.body.travelPlanId = req.params.travelPlanId;
+      var rating = createTravelPlanRatingMap(req.body);
+      //Map body to rating object
+    
+      await cruiseShipService.rateTravelPlan(req.session.customerId,req.params.travelPlanId,rating); // rating object instead of shipId
+      createResponse(res, 200, "Successfully rated the TravelPlan", {
+        rating
+      });
+    } catch (exception) {
+      next(exception);
+    }
+  }
+  async getTravelPlanRatingByTravelPlanId(req, res, next) {
+    try {
+      console.log("Getting travel plan ratings ...");
+
+
+      var ratings = await cruiseShipService.getTravelPlanRatingByTravelPlanId(req.params.travelPlanId); 
+      createResponse(res, 200, "Successfully fetched TravelPlan ratings", {
+        ratings
       });
     } catch (exception) {
       next(exception);

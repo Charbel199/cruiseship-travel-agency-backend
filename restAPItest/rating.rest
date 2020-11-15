@@ -1,0 +1,30 @@
+### Get ship rating
+
+GET http://localhost:8080/cruiseships/1/rating
+
+
+### Rate a ship
+
+POST http://localhost:8080/cruiseships/1/rating
+Content-Type: application/json
+
+{
+    "shipRating":"5",
+    "shipCustomerReview":"Very nice ship and good vibes"
+}
+
+
+### Get ship rating
+
+GET http://localhost:8080/travelplans/1/rating
+
+
+### Rate a ship
+
+POST http://localhost:8080/travelPlans/1/rating
+Content-Type: application/json
+
+{
+    "travelPlanRating":"5",
+    "travelPlanCustomerReview":"Very nice trip"
+}

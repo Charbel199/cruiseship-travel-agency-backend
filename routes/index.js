@@ -5,55 +5,70 @@ const { customerController } = require("../controller/customerController.js");
 const customerControllerObject = new customerController();
 const { cruiseShipController } = require("../controller/cruiseShipController.js");
 const cruiseShipControllerObject = new cruiseShipController();
-//Register
+
+
+//Register + Login:
+
+//tested
 router
   .route("/register")
   .post(customerControllerObject.isNotLoggedIn, customerControllerObject.register);
 
-//Login
+//tested
 router
   .route("/login")
   .post(customerControllerObject.isNotLoggedIn, customerControllerObject.login); //if logged in --> can't log in
-
-router
+//tested
+router 
   .route("/logout")
   .post(customerControllerObject.isLoggedIn, customerControllerObject.logout);
 
 
-//Cruiseships
+
+
+//Cruiseships:
+
+//tested
 router.route("/cruiseships").get(
   cruiseShipControllerObject.getAllCruiseShips
 ); 
 
+//tested
 router.route("/cruiseships/:shipId").get(
   cruiseShipControllerObject.getCruiseShipById
-); //Get rooms and get travel plans
-
+);
+//tested
 router.route("/cruiseships/:shipId/travelplans").get(
   cruiseShipControllerObject.getCruiseShipTravelPlans
 ); //Get rooms and get travel plans
 
+//tested
 router.route("/rooms/:roomId").get(
   cruiseShipControllerObject.getRoompById
+
 ); //Join with roomPlan
-
-
-
-
-
-
+//tested
 router.route("/cruiseships/:shipId/crewmembers").get(
   cruiseShipControllerObject.getCrewMemberByShipId
 );
 
-router.route("/cruisehips/:shipId/rating").post(
-  cruiseShipControllerObject.rateCruiseShip
-);
+/*
+router.route("/cruiseships/:shipId/travelplan/:travelPlanId/stops").get(
+  cruiseShipControllerObject.getCruiseShipTravelPlanStops
+); 
+
+router.route("/cruiseships/:shipId/travelplan/:travelPlanId/rooms").get(
+  cruiseShipControllerObject.getCruiseShipTravelPlanRooms
+); 
+
+*/
 
 
 
 
-//TravelPlans
+
+
+//TravelPlans:
 
 router.route("/travelplans/:travelPlanId").get(); //Gets travel plan details + stops
 
@@ -63,8 +78,40 @@ router.route("/travelplan/:travelPlanId/rating").post();
 
 
 
+
+
+
 //Ticket price
 //Ticket info
+
+
+
+
+//Rating:
+
+
+router.route("/cruiseships/:shipId/rating").post(
+  customerControllerObject.isLoggedIn,cruiseShipControllerObject.rateCruiseShip
+);
+router.route("/cruiseships/:shipId/rating").get(
+ cruiseShipControllerObject.getCruiseShipRatingByShipId
+);
+
+
+router.route("/travelplans/:travelPlanId/rating").post(
+  customerControllerObject.isLoggedIn,cruiseShipControllerObject.rateTravelPlan
+);
+router.route("/travelplans/:travelPlanId/rating").get(
+ cruiseShipControllerObject.getTravelPlanRatingByTravelPlanId
+
+);
+
+
+
+
+
+
+
 
 
 

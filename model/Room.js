@@ -1,5 +1,5 @@
 class Room {
-
+  //Add if available
     constructor(roomId,roomFloor,roomShipId,roomCapacity,roomClass,roomInfo,roomPrice,roomPictureURL) {
       
       this.roomId = roomId;

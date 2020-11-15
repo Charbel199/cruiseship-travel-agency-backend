@@ -83,6 +83,66 @@ class cruiseShipRepository {
     } catch (exception) {
       throw new ErrorHandler(400, "Couldn't get ship from Db");
     }
-  }       
+  }
+
+
+         
+
+  
+  static async rateCruiseShipInDb(customerId,shipId,rating) {
+    try {
+      const [rows, fields] = await pool.query(
+        `
+          INSERT INTO cruiseshiprating VALUES("0","${customerId}","${shipId}","${rating.rating}","${rating.customerReview}");
+        `
+      );
+      return rows;
+    } catch (exception) {
+      throw new ErrorHandler(400, "Couldn't rate ship"+exception);
+    }
+  }
+  static async getCruiseShipRatingByShipIdFromDb(shipId) {
+    try {
+      const [rows, fields] = await pool.query(
+        `
+          SELECT * from cruiseshiprating WHERE cruiseShipId = ${shipId};
+        `
+      );
+      return rows;
+    } catch (exception) {
+      throw new ErrorHandler(400, "Couldn't get ship ratings");
+    }
+  }
+
+
+
+
+
+
+  
+  static async rateTravelPlanInDb(customerId,travelPlanId,rating) {
+    try {
+      const [rows, fields] = await pool.query(
+        `
+          INSERT INTO travelplanrating VALUES("0","${customerId}","${travelPlanId}","${rating.rating}","${rating.customerReview}");
+        `
+      );
+      return rows;
+    } catch (exception) {
+      throw new ErrorHandler(400, "Couldn't rate travelplan"+exception);
+    }
+  }
+  static async getTravelPlanRatingByTravelPlanIdFromDb(travelPlanId) {
+    try {
+      const [rows, fields] = await pool.query(
+        `
+          SELECT * from travelPlanrating WHERE travelPlanId = ${travelPlanId};
+        `
+      );
+      return rows;
+    } catch (exception) {
+      throw new ErrorHandler(400, "Couldn't get travel plan ratings");
+    }
+  }
 }
 module.exports.cruiseShipRepository = cruiseShipRepository;

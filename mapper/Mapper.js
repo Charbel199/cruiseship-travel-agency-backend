@@ -3,6 +3,7 @@ const { CruiseShip } = require('../model/CruiseShip');
 const { Room } = require('../model/Room');
 const { TravelPlan } = require('../model/TravelPlan');
 const { CrewMember } = require('../model/CrewMembers');
+const { Rating } = require('../model/Rating');
 module.exports.createCustomerMap = function createCustomerMap(body){
     var customer = new Customer(
         body.customerId,
@@ -87,4 +88,22 @@ module.exports.createCrewMemberMap = function createCrewMemberMap(body){
         body.crewMemberPosition
     )
         return crewMember;
+}
+
+module.exports.createCruiseShipRatingMap = function createCruiseShipRatingMap(body){
+    var rating = new Rating(
+        body.cruiseShipId,
+        body.shipRating,
+        body.shipCustomerReview
+    )
+        return rating;
+}
+
+module.exports.createTravelPlanRatingMap = function createTravelPlanRatingMap(body){
+    var rating = new Rating(
+        body.travelPlanId,
+        body.travelPlanRating,
+        body.travelPlanCustomerReview
+    )
+        return rating;
 }
