@@ -2,47 +2,52 @@ const pool = require("../pool");
 const { Customer } = require("../model/Customer");
 const { ErrorHandler } = require("../error");
 
-class customerRepository {
+class cruiseShipRepository {
   constructor() {}
 
-  static async registerCustomerToDb(customer) {
-    try {
-      return await pool.query(`INSERT INTO customer
-                (customerFirstName,
-                customerLastName,
-                customerDateOfBirth,
-                customerGender,
-                customerAddress,
-                customerTelephoneNumber,
-                customerEmail,
-                customerPassword) VALUES(
-                "${customer.customerFirstName}",
-                "${customer.customerLastName}",
-                "${customer.customerDateOfBirth}",
-                "${customer.customerGender}",
-                "${customer.customerAddress}",
-                "${customer.customerTelephoneNumber}",
-                "${customer.customerEmail}",
-                "${customer.customerPassword}")`);
-    } catch (exception) {
-      throw new ErrorHandler(400, "Coudn't register");
-    }
-  }
 
-  static async getCustomer(customer) {
+  static async getAllCruiseShipsFromDb() {
     try {
       const [rows, fields] = await pool.query(
-        `select * from customer where customerEmail="${customer.customerEmail}"`
+        `select * 
+        from cruiseship 
+        `
       );
       return rows;
     } catch (exception) {
-      throw new ErrorHandler(400, "Couldn't check customer in Db");
+      throw new ErrorHandler(400, "Couldn't get cruiseships from Db");
     }
   }
 
   
-
-
+  static async getRoomByIdFromDb(roomId) {
+    try {
+      const [rows, fields] = await pool.query(
+        `select * 
+        from room
+        INNER JOIN roomplan
+        WHERE roomId=${roomId}
+        `
+      );
+      return rows;
+    } catch (exception) {
+      throw new ErrorHandler(400, "Couldn't get room from Db");
+    }
+  }
+  static async getCruiseShipByIdFromDb(shipId) {
+    try {
+      const [rows, fields] = await pool.query(
+        `select * 
+        from cruiseship
+        WHERE shipId=${shipId}
+        `
+      );
+      return rows;
+    } catch (exception) {
+      throw new ErrorHandler(400, "Couldn't get ship from Db");
+    }
+  }
+  
       
 }
-module.exports.customerRepository = customerRepository;
+module.exports.cruiseShipRepository = cruiseShipRepository;

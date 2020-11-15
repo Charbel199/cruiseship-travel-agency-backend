@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 const { customerRepository } = require("../repository/customerRepository");
 const { ErrorHandler } = require("../error");
 const { Customer } = require("../model/Customer");
-const { createCustomerMap } = require('../mapper/CustomerMapper');
+const { createCustomerMap } = require('../mapper/Mapper');
 class customerService {
   
   

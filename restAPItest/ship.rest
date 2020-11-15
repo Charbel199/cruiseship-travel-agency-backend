@@ -1,0 +1,17 @@
+### Get all cruiseships
+
+GET http://localhost:8080/cruiseships
+
+
+
+
+
+
+
+### Get specific ship
+
+GET http://localhost:8080/cruiseships/1
+
+### Get specific room
+
+GET http://localhost:8080/rooms/1

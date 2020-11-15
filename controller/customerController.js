@@ -1,7 +1,7 @@
 const { customerService } = require("../service/customerService");
 const { createResponse } = require("../response");
 const { Customer } = require('../model/Customer');
-const { createCustomerMap } = require('../mapper/CustomerMapper');
+const { createCustomerMap } = require('../mapper/Mapper');
 const { ErrorHandler } = require("../error");
 
 class customerController {
