@@ -24,3 +24,8 @@ GET http://localhost:8080/rooms/1
 ### Get ship travelplans
 
 GET http://localhost:8080/cruiseships/1/travelplans
+
+
+### Get ship crewmembers
+
+GET http://localhost:8080/cruiseships/1/crewmembers

@@ -63,6 +63,26 @@ class cruiseShipRepository {
       throw new ErrorHandler(400, "Couldn't get travel plans from Db");
     }
   }
-      
+
+
+  static async getCrewMemberByShipIdFromDb(shipId) {
+    try {
+      const [rows, fields] = await pool.query(
+        `SELECT crewmember.crewMemberId,crewMemberFirstName,crewMemberLastName,crewMemberDateOfBirth,crewMemberGender,crewMemberAddress,crewMemberTelephoneNumber,crewMemberPosition
+
+        FROM (SELECT crewcruiseship.crewMemberId  
+        FROM crewcruiseship 
+        JOIN cruiseship ON cruiseship.shipId = crewcruiseship.shipId 
+        WHERE crewcruiseship.shipId=${shipId} AND endDate >= current_date() ) AS B
+        
+        JOIN crewmember ON B.crewMemberId = crewmember.crewMemberId;
+        
+        `
+      );
+      return rows;
+    } catch (exception) {
+      throw new ErrorHandler(400, "Couldn't get ship from Db");
+    }
+  }       
 }
 module.exports.cruiseShipRepository = cruiseShipRepository;

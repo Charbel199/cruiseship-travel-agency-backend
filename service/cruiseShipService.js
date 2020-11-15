@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 const { cruiseShipRepository } = require("../repository/cruiseShipRepository");
 const { ErrorHandler } = require("../error");
 const { CruiseShip } = require("../model/CruiseShip");
-const { createCruiseShipMap, createRoomMap, createTravelPlanMap } = require('../mapper/Mapper');
+const { createCruiseShipMap, createRoomMap, createTravelPlanMap, createCrewMemberMap } = require('../mapper/Mapper');
 class cruiseShipService {
   
   
@@ -79,10 +79,10 @@ class cruiseShipService {
 
   static async getCrewMemberByShipId(shipId) {
     try {
-      var crewMembersFromDb = await cruiseShipRepository.getCrewMemberByShipId(shipId);
+      var crewMembersFromDb = await cruiseShipRepository.getCrewMemberByShipIdFromDb(shipId);
       var crewMembers = [];
       for(var i=0;i<crewMembersFromDb.length;i++)
-        crewMembers[i] = createCrewMembersPlanMap(crewMembersFromDb[i]);
+        crewMembers[i] = createCrewMemberMap(crewMembersFromDb[i]);
 
       return crewMembers;
 
