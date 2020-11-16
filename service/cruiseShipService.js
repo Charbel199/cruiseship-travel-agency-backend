@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 const { cruiseShipRepository } = require("../repository/cruiseShipRepository");
 const { ErrorHandler } = require("../error");
 const { CruiseShip } = require("../model/CruiseShip");
-const { createCruiseShipMap, createRoomMap, createTravelPlanMap, createCrewMemberMap, createCruiseShipRatingMap, createTravelPlanRatingMap } = require('../mapper/Mapper');
+const { createStopMap, createCruiseShipMap, createRoomMap, createTravelPlanMap, createCrewMemberMap, createCruiseShipRatingMap, createTravelPlanRatingMap } = require('../mapper/Mapper');
 class cruiseShipService {
   
   
@@ -165,6 +165,39 @@ class cruiseShipService {
     }
   }
   
+
+
+  static async getTravelPlanById(travelPlanId) {
+    try {
+      var travelPlanFromDb = await cruiseShipRepository.getTravelPlanByIdFromDb(travelPlanId);
+      console.log("FROM DB ",travelPlanFromDb);
+      var travelPlan = createTravelPlanMap(travelPlanFromDb[0]);
+      console.log("FROM DB processed ",travelPlan);
+      return travelPlan; 
+
+      
+    } catch (exception) {
+      throw exception;
+    }
+  }
+  
+
+  static async getStopById(stopId) {
+    try {
+      var stopFromDb = await cruiseShipRepository.getStopByIdFromDb(stopId);
+      if(stopFromDb.length<=0){
+        throw new ErrorHandler(404,"No stop with such id")
+      }
+      var stop = createStopMap(stopFromDb[0]);
+      
+      return stop; 
+
+      
+    } catch (exception) {
+      throw exception;
+    }
+  }
+
 
 }
 module.exports.cruiseShipService = cruiseShipService;

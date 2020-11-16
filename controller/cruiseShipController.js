@@ -129,6 +129,37 @@ class cruiseShipController {
   }
 
 
+
+
+  async getTravelPlanById(req, res, next) {
+    try {
+      console.log("Getting travel plan ...");
+
+
+      var travelPlan = await cruiseShipService.getTravelPlanById(req.params.travelPlanId); 
+      createResponse(res, 200, "Successfully fetched travel plan", {
+        travelPlan
+      });
+    } catch (exception) {
+      next(exception);
+    }
+  }
+
+  async getStopById(req, res, next) {
+    try {
+      console.log("Getting stop ...");
+
+
+      var stop = await cruiseShipService.getStopById(req.params.stopId); 
+      createResponse(res, 200, "Successfully fetched stop", {
+        stop
+      });
+    } catch (exception) {
+      next(exception);
+    }
+  }
+
+
 }
 
 module.exports.cruiseShipController = cruiseShipController;

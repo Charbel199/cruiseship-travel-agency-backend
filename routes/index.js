@@ -68,19 +68,22 @@ router.route("/cruiseships/:shipId/travelplan/:travelPlanId/rooms").get(
 
 
 
-//TravelPlans:
+//Travel plan:
 
-router.route("/travelplans/:travelPlanId").get(); //Gets travel plan details + stops
+router.route("/travelplans/:travelPlanId").get(
+  cruiseShipControllerObject.getTravelPlanById
+); 
 
-router.route("/stops/:stopId").get();
-
-router.route("/travelplan/:travelPlanId/rating").post();
-
-
-
-
+router.route("/stops/:stopId").get(
+  cruiseShipControllerObject.getStopById
+);
 
 
+
+
+
+
+//Reservation
 //Ticket price
 //Ticket info
 
@@ -89,7 +92,7 @@ router.route("/travelplan/:travelPlanId/rating").post();
 
 //Rating:
 
-
+//All tested
 router.route("/cruiseships/:shipId/rating").post(
   customerControllerObject.isLoggedIn,cruiseShipControllerObject.rateCruiseShip
 );

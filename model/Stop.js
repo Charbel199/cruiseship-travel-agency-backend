@@ -2,10 +2,10 @@ class Stop {
 
     constructor(stopId,stopDestination,stopGoogleURL,stopPictureURL) {
       
-      this.stoplId = stoplId;
-      this.stoplDestination = stoplDestination;
-      this.stoplGoogleURL = stoplGoogleURL;
-      this.stoplPictureURL = stoplPictureURL;
+      this.stopId = stopId;
+      this.stopDestination = stopDestination;
+      this.stopGoogleURL = stopGoogleURL;
+      this.stopPictureURL = stopPictureURL;
   
     }
   

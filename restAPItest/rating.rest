@@ -14,17 +14,17 @@ Content-Type: application/json
 }
 
 
-### Get ship rating
+### Get travel plan rating
 
 GET http://localhost:8080/travelplans/1/rating
 
 
-### Rate a ship
+### Rate a travel plan
 
 POST http://localhost:8080/travelPlans/1/rating
 Content-Type: application/json
 
 {
     "travelPlanRating":"5",
-    "travelPlanCustomerReview":"Very nice trip"
+    "travelPlanCustomerReview":"Very nice nice trip"
 }

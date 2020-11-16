@@ -144,5 +144,32 @@ class cruiseShipRepository {
       throw new ErrorHandler(400, "Couldn't get travel plan ratings");
     }
   }
+
+  static async getTravelPlanByIdFromDb(travelPlanId) {
+    try {
+      const [rows, fields] = await pool.query(
+        `
+          SELECT * from travelplan WHERE travelPlanId = ${travelPlanId};
+        `
+      );
+      return rows;
+    } catch (exception) {
+      throw new ErrorHandler(400, "Couldn't get travel plan");
+    }
+  }
+
+
+  static async getStopByIdFromDb(stopId) {
+    try {
+      const [rows, fields] = await pool.query(
+        `
+          SELECT * from stop WHERE stopId = ${stopId};
+        `
+      );
+      return rows;
+    } catch (exception) {
+      throw new ErrorHandler(400, "Couldn't get stop");
+    }
+  }
 }
 module.exports.cruiseShipRepository = cruiseShipRepository;
