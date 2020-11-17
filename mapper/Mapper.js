@@ -5,6 +5,7 @@ const { TravelPlan } = require('../model/TravelPlan');
 const { CrewMember } = require('../model/CrewMembers');
 const { Rating } = require('../model/Rating');
 const { Stop } = require('../model/Stop');
+const { Reservation } = require('../model/Reservation');
 module.exports.createCustomerMap = function createCustomerMap(body){
     var customer = new Customer(
         body.customerId,
@@ -71,7 +72,10 @@ module.exports.createStopMap = function createStopMap(body){
         body.stopId, 
         body.stopDestination, 
         body.stopGoogleURL, 
-        body.stopPictureURL
+        body.stopPictureURL,
+        body.stopArrivalDate,
+        body.stopDepartureDate,
+        body.stopRank
            )
         return stop;
 }
@@ -107,4 +111,19 @@ module.exports.createTravelPlanRatingMap = function createTravelPlanRatingMap(bo
         body.travelPlanCustomerReview
     )
         return rating;
+}
+
+
+module.exports.createReservationMap = function createReservationMap(body){
+    var reservation = new Reservation(
+       body.reservationId,
+       body.reservationTicketId,
+       body.reservationRoomId,
+       body.reservationTravelPlanId, 
+       body.reservationPrice,
+       body.ticketDateOfPurchase,
+       body.departureDate,
+       body.ticketCustomerId
+    )
+        return reservation;
 }

@@ -171,5 +171,21 @@ class cruiseShipRepository {
       throw new ErrorHandler(400, "Couldn't get stop");
     }
   }
+  static async getTravelPlanStopsByTravelPlanIdFromDb(travelPlanId) {
+    try {
+      const [rows, fields] = await pool.query(
+        `
+        SELECT stop.stopId,stopDestination,stopGoogleURL,stopPictureURL,stopArrivalDate,stopDepartureDate,stopRank 
+        FROM stop
+        JOIN travelplanstop ON travelplanstop.stopId=stop.stopId
+        WHERE travelplanstop.travelPlanId=${travelPlanId};
+        `
+      );
+      return rows;
+    } catch (exception) {
+      throw new ErrorHandler(400, "Couldn't get stop");
+    }
+  }
+ 
 }
 module.exports.cruiseShipRepository = cruiseShipRepository;

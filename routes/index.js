@@ -5,6 +5,8 @@ const { customerController } = require("../controller/customerController.js");
 const customerControllerObject = new customerController();
 const { cruiseShipController } = require("../controller/cruiseShipController.js");
 const cruiseShipControllerObject = new cruiseShipController();
+const { reservationController } = require("../controller/reservationController.js");
+const reservationControllerObject = new reservationController();
 
 
 //Register + Login:
@@ -52,10 +54,12 @@ router.route("/cruiseships/:shipId/crewmembers").get(
   cruiseShipControllerObject.getCrewMemberByShipId
 );
 
-/*
-router.route("/cruiseships/:shipId/travelplan/:travelPlanId/stops").get(
-  cruiseShipControllerObject.getCruiseShipTravelPlanStops
+
+router.route("/travelplan/:travelPlanId/stops").get(
+  cruiseShipControllerObject.getTravelPlanStops
 ); 
+
+/*
 
 router.route("/cruiseships/:shipId/travelplan/:travelPlanId/rooms").get(
   cruiseShipControllerObject.getCruiseShipTravelPlanRooms
@@ -84,6 +88,14 @@ router.route("/stops/:stopId").get(
 
 
 //Reservation
+router.route("/reservations").get(
+  customerControllerObject.isLoggedIn,reservationControllerObject.getAllReservations
+);
+
+router.route("/reservations").post(
+  customerControllerObject.isLoggedIn,reservationControllerObject.makeReservation
+);
+
 //Ticket price
 //Ticket info
 

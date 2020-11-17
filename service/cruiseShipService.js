@@ -185,10 +185,13 @@ class cruiseShipService {
   static async getStopById(stopId) {
     try {
       var stopFromDb = await cruiseShipRepository.getStopByIdFromDb(stopId);
+
       if(stopFromDb.length<=0){
         throw new ErrorHandler(404,"No stop with such id")
       }
-      var stop = createStopMap(stopFromDb[0]);
+ 
+       var stop = createStopMap(stopFromDb[0]);
+
       
       return stop; 
 
@@ -197,6 +200,24 @@ class cruiseShipService {
       throw exception;
     }
   }
+  static async getTravelPlanStops(travelPlanId) {
+    try {
+      var stopsFromDb = await cruiseShipRepository.getTravelPlanStopsByTravelPlanIdFromDb(travelPlanId);
+      var stops = [];
+      if(stopsFromDb.length<=0){
+        throw new ErrorHandler(404,"No stops")
+      }
+      for(var i =0;i<stopsFromDb.length;i++)
+        stops[i] = createStopMap(stopsFromDb[i])
+      
+      return stops; 
+
+      
+    } catch (exception) {
+      throw exception;
+    }
+  }
+  
 
 
 }

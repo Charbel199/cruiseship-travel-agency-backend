@@ -158,8 +158,20 @@ class cruiseShipController {
       next(exception);
     }
   }
+  async getTravelPlanStops(req, res, next) {
+    try {
+      console.log("Getting travel plan stops ...");
 
 
+      var stops = await cruiseShipService.getTravelPlanStops(req.params.travelPlanId); 
+      createResponse(res, 200, "Successfully fetched stops", {
+        stops
+      });
+    } catch (exception) {
+      next(exception);
+    }
+  }
+  
 }
 
 module.exports.cruiseShipController = cruiseShipController;

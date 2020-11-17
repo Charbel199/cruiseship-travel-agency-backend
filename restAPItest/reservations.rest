@@ -1,0 +1,16 @@
+### Get all reservations
+
+GET http://localhost:8080/reservations
+
+
+### Make a reservation
+
+POST http://localhost:8080/reservations
+Content-Type: application/json
+
+{
+    "ticketDateOfPurchase":"2020-12-01",
+    "departureDate":"2020-12-04",
+    "reservationRoomId":"1",
+    "reservationTravelPlanId":"1"
+}
