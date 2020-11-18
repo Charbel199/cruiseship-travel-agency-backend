@@ -255,9 +255,10 @@ Content-Type: application/json
     "departureDate":"2020-12-19"
 }
 -->Get list of ROOMS with roomStatus
+
+
+
 ===========================================================================
-
-
 //Travel plan specific:
 
 //tested
@@ -286,17 +287,17 @@ GET http://localhost:8080/travelplans/1
 
 GET http://localhost:8080/stops/3
 -->Get one TRAVEL PLAN (No dates or rank)
+
+
+
+
+
+
+
+
+
+
 ===========================================================================
-
-
-
-
-
-
-
-
-
-
 //Reservation
 
 //tested
@@ -338,11 +339,11 @@ Content-Type: application/json
 
 
 
+
+
+
+
 ===========================================================================
-
-
-
-
 //Rating:
 //All tested
 
@@ -401,4 +402,4 @@ Content-Type: application/json
     "travelPlanCustomerReview":"Very nice nice trip"
 }
 
-===========================================================================
+
