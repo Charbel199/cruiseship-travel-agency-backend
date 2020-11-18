@@ -54,18 +54,18 @@ router.route("/cruiseships/:shipId/crewmembers").get(
   cruiseShipControllerObject.getCrewMemberByShipId
 );
 
-
+//tested
 router.route("/travelplan/:travelPlanId/stops").get(
   cruiseShipControllerObject.getTravelPlanStops
 ); 
 
-/*
 
+//tested
 router.route("/cruiseships/:shipId/travelplan/:travelPlanId/rooms").get(
   cruiseShipControllerObject.getCruiseShipTravelPlanRooms
-); 
+)
 
-*/
+
 
 
 
@@ -73,11 +73,11 @@ router.route("/cruiseships/:shipId/travelplan/:travelPlanId/rooms").get(
 
 
 //Travel plan:
-
+//tested
 router.route("/travelplans/:travelPlanId").get(
   cruiseShipControllerObject.getTravelPlanById
 ); 
-
+//test
 router.route("/stops/:stopId").get(
   cruiseShipControllerObject.getStopById
 );
@@ -88,16 +88,16 @@ router.route("/stops/:stopId").get(
 
 
 //Reservation
+//tested
 router.route("/reservations").get(
   customerControllerObject.isLoggedIn,reservationControllerObject.getAllReservations
-);
-
+); //Returns price with it 
+//tested
 router.route("/reservations").post(
   customerControllerObject.isLoggedIn,reservationControllerObject.makeReservation
 );
 
-//Ticket price
-//Ticket info
+
 
 
 

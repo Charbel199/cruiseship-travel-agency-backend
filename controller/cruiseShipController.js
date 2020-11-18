@@ -171,6 +171,23 @@ class cruiseShipController {
       next(exception);
     }
   }
+
+  async  getCruiseShipTravelPlanRooms(req, res, next) {
+    try {
+      console.log("Getting travel plan rooms ...");
+      var travelPlanId = req.params.travelPlanId;
+      var shipId = req.params.shipId;
+      var departureDate = req.body.departureDate;
+      var rooms = await cruiseShipService.getCruiseShipTravelPlanRooms(shipId,travelPlanId,departureDate); 
+      createResponse(res, 200, "Successfully fetched rooms", {
+        rooms
+      });
+    } catch (exception) {
+      next(exception);
+    }
+  }
+
+
   
 }
 

@@ -43,3 +43,11 @@ GET http://localhost:8080/travelplans/1
 GET http://localhost:8080/stops/3
 
 
+### Get all rooms with info
+
+GET http://localhost:8080/cruiseships/1/travelplan/1/rooms
+Content-Type: application/json
+
+{
+    "departureDate":"2020-12-19"
+}

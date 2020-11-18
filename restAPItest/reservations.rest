@@ -10,7 +10,7 @@ Content-Type: application/json
 
 {
     "ticketDateOfPurchase":"2020-12-01",
-    "departureDate":"2020-12-04",
-    "reservationRoomId":"1",
+    "departureDate":"2020-12-19",
+    "reservationRoomId":"4",
     "reservationTravelPlanId":"1"
 }

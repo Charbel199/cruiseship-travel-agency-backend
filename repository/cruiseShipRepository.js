@@ -186,6 +186,45 @@ class cruiseShipRepository {
       throw new ErrorHandler(400, "Couldn't get stop");
     }
   }
- 
+  
+
+  static async getTravelPlanReservedRooms(shipId,travelPlanId,departureDate){
+    try {
+      const [rows, fields] = await pool.query(
+        `
+        SELECT roomId,roomFloor,roomShipId,roomCapacity,roomClass,roomInfo,roomPrice,roomPictureURL FROM
+        (
+        SELECT * FROM
+        (SELECT reservationRoomId 
+        FROM ticket
+        JOIN reservation ON ticket.ticketId = reservation.reservationTicketId
+        WHERE departureDate="${departureDate}" AND reservationTravelPlanId=${travelPlanId}) AS B
+        JOIN room ON reservationRoomId=roomId
+        WHERE room.roomShipId = ${shipId} ) AS C 
+        JOIN roomplan ON C.roomplanId=roomplan.roomPlanId
+        
+        
+        `
+      );
+      return rows;
+    } catch (exception) {
+      throw new ErrorHandler(400, "Couldn't get reserved rooms");
+    }
+  }
+  static async getRoomsByShipIdFromDb(shipId){
+    try {
+      const [rows, fields] = await pool.query(
+        `
+        SELECT roomId,roomFloor,roomShipId,roomCapacity,roomClass,roomInfo,roomPrice,roomPictureURL
+        from room
+        JOIN roomplan ON room.roomPlanId=roomplan.roomPlanId
+        WHERE room.roomShipId = ${shipId};
+        `
+      );
+      return rows;
+    } catch (exception) {
+      throw new ErrorHandler(400, "Couldn't get rooms");
+    }
+  }
 }
 module.exports.cruiseShipRepository = cruiseShipRepository;

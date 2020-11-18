@@ -218,7 +218,37 @@ class cruiseShipService {
     }
   }
   
+  
+  static async getCruiseShipTravelPlanRooms(shipId,travelPlanId,departureDate) {
+    try {
+      var reservedRoomsFromDb = await cruiseShipRepository.getTravelPlanReservedRooms(shipId,travelPlanId,departureDate);
+      var roomsFromDb =  await cruiseShipRepository.getRoomsByShipIdFromDb(shipId);
+      var rooms =[];
+      var reservedRooms = [];
+      var reservedRoomsId = []; 
+      for(var i =0;i<reservedRoomsFromDb.length;i++){
+        reservedRooms[i] = createRoomMap(reservedRoomsFromDb[i])
+        reservedRoomsId.push(reservedRooms[i].roomId);
+      }
+      for(var j =0;j<roomsFromDb.length;j++){
 
+        rooms[j] = createRoomMap(roomsFromDb[j])
+        if(reservedRoomsId.includes(rooms[j].roomId)){
+          rooms[j].roomStatus = "reserved";
+        }else{
+          rooms[j].roomStatus = "free";
+        }
+      }
+
+    
+     
+      return rooms; 
+
+      
+    } catch (exception) {
+      throw exception;
+    }
+  }
 
 }
 module.exports.cruiseShipService = cruiseShipService;

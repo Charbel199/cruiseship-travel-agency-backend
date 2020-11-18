@@ -46,7 +46,8 @@ module.exports.createRoomMap = function createRoomMap(body){
         body.roomClass, 
         body.roomInfo,
         body.roomPrice, 
-        body.roomPictureURL
+        body.roomPictureURL,
+        body.roomStatus
     )
         return room;
 }
