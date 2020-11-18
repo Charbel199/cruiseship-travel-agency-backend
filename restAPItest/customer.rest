@@ -10,7 +10,7 @@ Content-Type: application/json
     "customerGender":"M",
     "customerAddress":"Fanar",
     "customerTelephoneNumber":"03532816",
-    "customerEmail":"tester@gmail.com",
+    "customerEmail":"charbel-@gmail.com",
     "customerPassword":"password"
 }
 

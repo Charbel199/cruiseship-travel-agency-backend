@@ -33,14 +33,7 @@ GET http://localhost:8080/cruiseships/1/crewmembers
 
 
 
-### Get travel plan by id
 
-GET http://localhost:8080/travelplans/1
-
-
-### Get stop by id
-
-GET http://localhost:8080/stops/3
 
 
 ### Get all rooms with info
@@ -51,3 +44,21 @@ Content-Type: application/json
 {
     "departureDate":"2020-12-19"
 }
+
+
+
+
+
+
+
+
+
+
+### Get travel plan by id
+
+GET http://localhost:8080/travelplans/1
+
+
+### Get stop by id
+
+GET http://localhost:8080/stops/3

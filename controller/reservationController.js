@@ -23,6 +23,10 @@ class reservationController {
   async makeReservation(req, res, next) {
     try {
       req.body.ticketCustomerId = req.session.customerId;
+      let date_ob = new Date();
+      let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+      let date = ("0" + date_ob.getDate()).slice(-2);
+      req.body.ticketDateOfPurchase = (date_ob.getFullYear()+"-"+month+"-"+date);
       var reservation = createReservationMap(req.body);
    
       await reservationService.makeReservation(reservation);
