@@ -22,9 +22,9 @@ class cruiseShipController {
   async getCruiseShipById(req, res, next) {
     try {
       console.log("Getting the specific cruiseship ...");
-      var cruiseship = await cruiseShipService.getCruiseShipById(req.params.shipId);
+      var cruiseships = await cruiseShipService.getCruiseShipById(req.params.shipId);
       createResponse(res, 200, "Successfully fetched the cruiseship", {
-        cruiseship
+        cruiseships
       });
     } catch (exception) {
       next(exception);
@@ -47,9 +47,9 @@ class cruiseShipController {
   async getRoompById(req, res, next) {
     try {
       console.log("Getting the specific room ...");
-      var room = await cruiseShipService.getRoomById(req.params.roomId);
+      var rooms = await cruiseShipService.getRoomById(req.params.roomId);
       createResponse(res, 200, "Successfully fetched the room", {
-        room
+        rooms
       });
     } catch (exception) {
       next(exception);
@@ -136,9 +136,9 @@ class cruiseShipController {
       console.log("Getting travel plan ...");
 
 
-      var travelPlan = await cruiseShipService.getTravelPlanById(req.params.travelPlanId); 
+      var travelPlans = await cruiseShipService.getTravelPlanById(req.params.travelPlanId); 
       createResponse(res, 200, "Successfully fetched travel plan", {
-        travelPlan
+        travelPlans
       });
     } catch (exception) {
       next(exception);
@@ -150,9 +150,9 @@ class cruiseShipController {
       console.log("Getting stop ...");
 
 
-      var stop = await cruiseShipService.getStopById(req.params.stopId); 
+      var stops = await cruiseShipService.getStopById(req.params.stopId); 
       createResponse(res, 200, "Successfully fetched stop", {
-        stop
+        stops
       });
     } catch (exception) {
       next(exception);
