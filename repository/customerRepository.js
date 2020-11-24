@@ -41,7 +41,16 @@ class customerRepository {
   }
 
   
-
+  static async getCustomerByIdFromDb(customerId) {
+    try {
+      const [rows, fields] = await pool.query(
+        `select * from customer where customerId="${customerId}"`
+      );
+      return rows;
+    } catch (exception) {
+      throw new ErrorHandler(400, "Couldn't check customer in Db");
+    }
+  }
 
       
 }

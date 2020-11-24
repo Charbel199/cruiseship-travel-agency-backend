@@ -1,7 +1,7 @@
 const { customerService } = require("../service/customerService");
 const { createResponse } = require("../response");
 const { Customer } = require('../model/Customer');
-const { createCustomerMap } = require('../mapper/Mapper');
+const { createCustomerMap, createCruiseShipRatingMap } = require('../mapper/Mapper');
 const { ErrorHandler } = require("../error");
 
 class customerController {
@@ -44,6 +44,20 @@ class customerController {
       next(exception);
     }
   }
+  
+async loginPing(req,res,next){
+  try {
+    const customerId = req.session.customerId;
+    var customer = await customerService.getCustomerById(customerId);
+
+    createResponse(res, 200, `You are logged in`, {
+      customer
+    });
+
+  } catch (exception) {
+    next(exception);
+  }
+}
 
   logout(req, res, next) {
     try {

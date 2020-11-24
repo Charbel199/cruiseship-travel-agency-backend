@@ -36,6 +36,18 @@ class customerService {
       throw exception;
     }
   }
+  static async  getCustomerById(customerId) {
+    try {
+      var customer = await customerRepository.getCustomerByIdFromDb(customerId);
+
+      customer = createCustomerMap(customer[0]);  
+
+      return customer;
+    } catch (exception) {
+      throw exception;
+    }
+  }
+ 
 
   static async login(customer) {
     try {
