@@ -25,7 +25,7 @@ class customerRepository {
                 "${customer.customerEmail}",
                 "${customer.customerPassword}")`);
     } catch (exception) {
-      throw new ErrorHandler(400, "Coudn't register");
+      throw new ErrorHandler(400, "Coudn't register "+exception);
     }
   }
 

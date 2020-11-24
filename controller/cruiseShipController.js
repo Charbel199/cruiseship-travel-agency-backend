@@ -35,9 +35,9 @@ class cruiseShipController {
   async getCruiseShipTravelPlans(req, res, next) {
     try {
       console.log("Getting cruiseship travel plans ...");
-      var travelPlans = await cruiseShipService.getCruiseShipTravelPlans(req.params.shipId);
+      var travelplans = await cruiseShipService.getCruiseShipTravelPlans(req.params.shipId);
       createResponse(res, 200, "Successfully fetched the travel plans", {
-        travelPlans
+        travelplans
       });
     } catch (exception) {
       next(exception);
@@ -60,9 +60,9 @@ class cruiseShipController {
   async getCrewMemberByShipId(req, res, next) {
     try {
       console.log("Getting crew members ...");
-      var crewMembers = await cruiseShipService.getCrewMemberByShipId(req.params.shipId);
+      var crewmembers = await cruiseShipService.getCrewMemberByShipId(req.params.shipId);
       createResponse(res, 200, "Successfully fetched crew members", {
-        crewMembers
+        crewmembers
       });
     } catch (exception) {
       next(exception);
@@ -136,9 +136,9 @@ class cruiseShipController {
       console.log("Getting travel plan ...");
 
 
-      var travelPlans = await cruiseShipService.getTravelPlanById(req.params.travelPlanId); 
+      var travelplans = await cruiseShipService.getTravelPlanById(req.params.travelPlanId); 
       createResponse(res, 200, "Successfully fetched travel plan", {
-        travelPlans
+        travelplans
       });
     } catch (exception) {
       next(exception);
