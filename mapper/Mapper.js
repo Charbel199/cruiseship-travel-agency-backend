@@ -74,8 +74,7 @@ module.exports.createStopMap = function createStopMap(body){
         body.stopDestination, 
         body.stopGoogleURL, 
         body.stopPictureURL,
-        body.stopArrivalDate,
-        body.stopDepartureDate,
+        body.stopDuration,
         body.stopRank
            )
         return stop;
