@@ -21,7 +21,7 @@ GET http://localhost:8080/travelplans/1/rating
 
 ### Rate a travel plan
 
-POST http://localhost:8080/travelPlans/1/rating
+POST http://localhost:8080/travelplans/1/rating
 Content-Type: application/json
 
 {

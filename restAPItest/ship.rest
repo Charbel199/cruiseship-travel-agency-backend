@@ -25,7 +25,7 @@ GET http://localhost:8080/cruiseships/1/travelplans
 
 ### Get travel plan stops
 
-GET http://localhost:8080/travelplan/2/stops
+GET http://localhost:8080/travelplans/2/stops
 
 ### Get ship crewmembers
 
@@ -38,14 +38,7 @@ GET http://localhost:8080/cruiseships/1/crewmembers
 
 ### Get all rooms with info
 
-GET http://localhost:8080/cruiseships/1/travelplan/1/rooms
-Content-Type: application/json
-
-{
-    "departureDate":"2020-12-19"
-}
-
-
+GET http://localhost:8080/cruiseships/1/travelplans/1/rooms?departureDate=2020-12-19
 
 
 

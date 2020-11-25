@@ -75,9 +75,10 @@ class cruiseShipController {
       console.log("Rating cruiseship ...");
       req.body.cruiseShipId = req.params.shipId;
       var rating = createCruiseShipRatingMap(req.body);
+      console.log(rating);
       //Map body to rating object
     
-      await cruiseShipService.rateCruiseShip(req.session.customerId,req.params.shipId,rating); // rating object instead of shipId
+      await cruiseShipService.rateCruiseShip(req.session.customerId,rating); // rating object instead of shipId
       createResponse(res, 200, "Successfully rated the cruiseship", {
         rating
       });
@@ -106,7 +107,7 @@ class cruiseShipController {
       var rating = createTravelPlanRatingMap(req.body);
       //Map body to rating object
     
-      await cruiseShipService.rateTravelPlan(req.session.customerId,req.params.travelPlanId,rating); // rating object instead of shipId
+      await cruiseShipService.rateTravelPlan(req.session.customerId,rating); // rating object instead of shipId
       createResponse(res, 200, "Successfully rated the TravelPlan", {
         rating
       });
@@ -162,7 +163,7 @@ class cruiseShipController {
     try {
       console.log("Getting travel plan stops ...");
 
-
+      
       var stops = await cruiseShipService.getTravelPlanStops(req.params.travelPlanId); 
       createResponse(res, 200, "Successfully fetched stops", {
         stops
@@ -177,7 +178,7 @@ class cruiseShipController {
       console.log("Getting travel plan rooms ...");
       var travelPlanId = req.params.travelPlanId;
       var shipId = req.params.shipId;
-      var departureDate = req.body.departureDate;
+      var departureDate = req.query.departureDate;
       var rooms = await cruiseShipService.getCruiseShipTravelPlanRooms(shipId,travelPlanId,departureDate); 
       createResponse(res, 200, "Successfully fetched rooms", {
         rooms

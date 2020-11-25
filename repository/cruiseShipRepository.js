@@ -89,11 +89,11 @@ class cruiseShipRepository {
          
 
   
-  static async rateCruiseShipInDb(customerId,shipId,rating) {
+  static async rateCruiseShipInDb(customerId,rating) {
     try {
       const [rows, fields] = await pool.query(
         `
-          INSERT INTO cruiseshiprating VALUES("0","${customerId}","${shipId}","${rating.rating}","${rating.customerReview}");
+          INSERT INTO cruiseshiprating VALUES("0","${customerId}","${rating.entityId}","${rating.rating}","${rating.customerReview}");
         `
       );
       return rows;
@@ -120,11 +120,11 @@ class cruiseShipRepository {
 
 
   
-  static async rateTravelPlanInDb(customerId,travelPlanId,rating) {
+  static async rateTravelPlanInDb(customerId,rating) {
     try {
       const [rows, fields] = await pool.query(
         `
-          INSERT INTO travelplanrating VALUES("0","${customerId}","${travelPlanId}","${rating.rating}","${rating.customerReview}");
+          INSERT INTO travelplanrating VALUES("0","${customerId}","${rating.entityId}","${rating.rating}","${rating.customerReview}");
         `
       );
       return rows;
@@ -175,7 +175,7 @@ class cruiseShipRepository {
     try {
       const [rows, fields] = await pool.query(
         `
-        SELECT stop.stopId,stopDestination,stopGoogleURL,stopPictureURL,stopArrivalDate,stopDepartureDate,stopRank 
+        SELECT stop.stopId,stopDestination,stopGoogleURL,stopPictureURL,stopDuration,stopRank 
         FROM stop
         JOIN travelplanstop ON travelplanstop.stopId=stop.stopId
         WHERE travelplanstop.travelPlanId=${travelPlanId};

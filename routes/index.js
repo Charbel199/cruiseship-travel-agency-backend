@@ -59,13 +59,13 @@ router.route("/cruiseships/:shipId/crewmembers").get(
 );
 
 //tested
-router.route("/travelplan/:travelPlanId/stops").get(
+router.route("/travelplans/:travelPlanId/stops").get(
   cruiseShipControllerObject.getTravelPlanStops
 ); 
 
 
 //tested
-router.route("/cruiseships/:shipId/travelplan/:travelPlanId/rooms").get(
+router.route("/cruiseships/:shipId/travelplans/:travelPlanId/rooms").get(
   cruiseShipControllerObject.getCruiseShipTravelPlanRooms
 )
 

@@ -96,9 +96,9 @@ class cruiseShipService {
   }
 
 
-  static async rateCruiseShip(customerId,shipId,rating) {
+  static async rateCruiseShip(customerId,rating) {
     try {
-      var ratingResponse = await cruiseShipRepository.rateCruiseShipInDb(customerId,shipId,rating);
+      var ratingResponse = await cruiseShipRepository.rateCruiseShipInDb(customerId,rating);
 
 
       return ratingResponse;
@@ -131,9 +131,9 @@ class cruiseShipService {
   }
 
 
-  static async rateTravelPlan(customerId,travelPlanId,rating) {
+  static async rateTravelPlan(customerId,rating) {
     try {
-      var ratingResponse = await cruiseShipRepository.rateTravelPlanInDb(customerId,travelPlanId,rating);
+      var ratingResponse = await cruiseShipRepository.rateTravelPlanInDb(customerId,rating);
 
 
       return ratingResponse;
