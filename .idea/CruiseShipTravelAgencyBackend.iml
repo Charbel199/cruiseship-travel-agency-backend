@@ -9,7 +9,5 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="CruiseShipTravelAgencyFrontend" />
-    <orderEntry type="module" module-name="angular-Cruise-Ship" />
-    <orderEntry type="module" module-name="RolandProject" />
   </component>
 </module>
