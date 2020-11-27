@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/CruiseShipTravelAgencyBackend.iml" filepath="$PROJECT_DIR$/.idea/CruiseShipTravelAgencyBackend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../CruiseShipTravelAgencyFrontend/.idea/CruiseShipTravelAgencyFrontend.iml" filepath="$PROJECT_DIR$/../CruiseShipTravelAgencyFrontend/.idea/CruiseShipTravelAgencyFrontend.iml" />
+    </modules>
+  </component>
+</project>

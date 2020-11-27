@@ -48,7 +48,7 @@ app.use(
     store: sessionStore,
   
     cookie: {
-      sameSite: 'none',
+      sameSite: 'lax',
       httpOnly: false,
       maxAge: 1000 * 60 * 60 * 10000, //to change (Max value)
     },
