@@ -39,7 +39,9 @@ class customerService {
   static async  getCustomerById(customerId) {
     try {
       var customer = await customerRepository.getCustomerByIdFromDb(customerId);
-
+      if(customer.length == 0){
+        throw new ErrorHandler(401, 'Not logged in');
+      }
       customer = createCustomerMap(customer[0]);  
 
       return customer;

@@ -23,7 +23,7 @@ router
   //tested
 router
 .route("/login")
-.get(customerControllerObject.isLoggedIn, customerControllerObject.loginPing); //if logged in --> can't log in
+.get(customerControllerObject.loginPing); //if logged in --> can't log in
 //tested
 router 
   .route("/logout")

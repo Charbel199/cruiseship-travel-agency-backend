@@ -47,7 +47,9 @@ class customerController {
   
 async loginPing(req,res,next){
   try {
+    console.log("PINGING")
     const customerId = req.session.customerId;
+    console.log(customerId);
     var customer = await customerService.getCustomerById(customerId);
 
     createResponse(res, 200, `You are logged in`, {
