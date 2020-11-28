@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/CruiseShipTravelAgencyBackend.iml" filepath="$PROJECT_DIR$/.idea/CruiseShipTravelAgencyBackend.iml" />
       <module fileurl="file://$PROJECT_DIR$/../CruiseShipTravelAgencyFrontend/.idea/CruiseShipTravelAgencyFrontend.iml" filepath="$PROJECT_DIR$/../CruiseShipTravelAgencyFrontend/.idea/CruiseShipTravelAgencyFrontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../../../../Angular Workspace/HTML project/.idea/HTML project.iml" filepath="$PROJECT_DIR$/../../../../../../Angular Workspace/HTML project/.idea/HTML project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../../../../Angular Workspace/angular-Cruise-Ship/.idea/angular-Cruise-Ship.iml" filepath="$PROJECT_DIR$/../../../../../../Angular Workspace/angular-Cruise-Ship/.idea/angular-Cruise-Ship.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../test/.idea/test.iml" filepath="$PROJECT_DIR$/../test/.idea/test.iml" />
     </modules>
   </component>
 </project>

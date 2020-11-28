@@ -22,9 +22,9 @@ class cruiseShipController {
   async getCruiseShipById(req, res, next) {
     try {
       console.log("Getting the specific cruiseship ...");
-      var cruiseships = await cruiseShipService.getCruiseShipById(req.params.shipId);
+      var cruiseship = await cruiseShipService.getCruiseShipById(req.params.shipId);
       createResponse(res, 200, "Successfully fetched the cruiseship", {
-        cruiseships
+        cruiseship
       });
     } catch (exception) {
       next(exception);
