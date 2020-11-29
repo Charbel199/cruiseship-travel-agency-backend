@@ -8,9 +8,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="CruiseShipTravelAgencyFrontend" />
     <orderEntry type="module" module-name="angular-Cruise-Ship" />
     <orderEntry type="module" module-name="HTML project" />
-    <orderEntry type="module" module-name="test" />
+    <orderEntry type="module" module-name="CruiseShipTravelAgencyFrontend" />
   </component>
 </module>

@@ -59,6 +59,7 @@ module.exports.createTravelPlanMap = function createTravelPlanMap(body){
         body.travelPlanDescription,
         body.travelPlanRegion,
         body.travelPlanPrice,
+        body.travelPlanPictureURL,
         body.shipId,
         body.departureDate,
         body.returnDate

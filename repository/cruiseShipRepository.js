@@ -52,7 +52,7 @@ class cruiseShipRepository {
   static async getCruiseShipTravelPlansFromDb(shipId) {
     try {
       const [rows, fields] = await pool.query(
-        `SELECT travelplan.travelPlanId,travelplan.travelPlanDescription,travelplan.travelPlanRegion,travelplan.travelPlanPrice,cruisetravelplan.shipId,cruisetravelplan.departureDate,cruisetravelplan.returnDate
+        `SELECT travelplan.travelPlanId,travelplan.travelPlanDescription,travelplan.travelPlanRegion,travelplan.travelPlanPrice,travelplan.travelPlanPictureURL,cruisetravelplan.shipId,cruisetravelplan.departureDate,cruisetravelplan.returnDate
         FROM travelplan
         JOIN cruisetravelplan ON travelplan.travelPlanId = cruisetravelplan.travelPlanId
         WHERE shipId=${shipId};
