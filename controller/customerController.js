@@ -65,10 +65,11 @@ async loginPing(req,res,next){
     try {
       console.log("Logging out...");
    
-      if (!req.session.customerId) throw new ErrorHandler(400, "Not logged in");
-
-      const customerId = req.session.customerId;
-
+      if (!req.session.customerId && !req.session.adminId) throw new ErrorHandler(400, "Not logged in");
+      
+     
+      if(req.session.customerId){
+        const customerId = req.session.customerId;
       req.session.destroy((err) => {
         if (err) {
           throw new ErrorHandler(400, "Couldn't log out");
@@ -79,6 +80,22 @@ async loginPing(req,res,next){
           });
         }
       });
+    }else if(req.sessions.adminId){
+      const adminId = req.session.customerId;
+      req.session.destroy((err) => {
+        if (err) {
+          throw new ErrorHandler(400, "Couldn't log out");
+        } else {
+          res.clearCookie("sid");
+          createResponse(res, 200, "Successfully logged out", {
+            adminId
+          });
+        }
+      });
+    }
+
+
+
     } catch (exception) {
       next(exception);
     }
