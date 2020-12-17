@@ -1,0 +1,73 @@
+POST http://localhost:8080/admin/login
+Content-Type: application/json
+
+{
+    "email":"charbel.admin",
+    "password":"pass"
+}
+
+###TRAVEL PLAN
+
+POST http://localhost:8080/admin/travelPlan
+Content-Type: application/json
+
+{
+    "travelPlanDescription":"WAW",
+    "travelPlanRegion":"Hon",
+    "travelPlanPrice":"12",
+    "travelPlanPictureURL":"../../assets/Mediterranean.jpg"
+}
+###
+DELETE http://localhost:8080/admin/travelPlan/10
+
+###STOP
+
+POST http://localhost:8080/admin/stop
+Content-Type: application/json
+
+{
+    "stopDestination":"WAW",
+    "stopGoogleURL":"-12.623127379100467,130.6286794609505",
+    "stopPictureURL":"../../assets/Stops/stopAustralia"
+}
+###
+DELETE http://localhost:8080/admin/stop/29
+
+####CREW MEMBERS
+
+POST http://localhost:8080/admin/crewMember
+Content-Type: application/json
+
+{
+      "crewMemberFirstName":"Tester",
+      "crewMemberLastName":"Tester",
+      "crewMemberDateOfBirth":"2000",
+      "crewMemberGender":"M",
+      "crewMemberAddress":"Tester",
+      "crewMemberTelephoneNumber":"Tester",
+      "crewMemberPosition":"Tester"
+}
+
+###
+DELETE http://localhost:8080/admin/crewMember/4
+
+
+###LINK SHIP AND TRAVEL PLAN
+
+POST http://localhost:8080/admin/ship/1/travelPlan/11
+Content-Type: application/json
+
+{
+      "departureDate":"2020-12-27",
+      "returnDate":"2020-12-30"
+}
+
+###LINK TRAVEL PLAN AND STOP
+
+POST http://localhost:8080/admin/travelPlan/11/stop/30
+Content-Type: application/json
+
+{
+      "stopDuration":"6",
+      "stopRank":"6"
+}

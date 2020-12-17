@@ -7,6 +7,9 @@ const { cruiseShipController } = require("../controller/cruiseShipController.js"
 const cruiseShipControllerObject = new cruiseShipController();
 const { reservationController } = require("../controller/reservationController.js");
 const reservationControllerObject = new reservationController();
+const { adminController } = require("../controller/adminController.js");
+const adminControllerObject = new adminController();
+
 
 
 //Register + Login:
@@ -125,9 +128,39 @@ router.route("/travelplans/:travelPlanId/rating").get(
 
 );
 
+router.route("/admin/login").post(
+  customerControllerObject.isNotLoggedIn, adminControllerObject.login
+);
+
+router.route("/admin/travelPlan").post(
+  adminControllerObject.pushPlan
+
+);
+router.route("/admin/travelPlan/:travelPlanId").delete(
+  adminControllerObject.deletePlan
+);
+router.route("/admin/stop").post(
+  adminControllerObject.pushStop
+);
+
+router.route("/admin/stop/:stopId").delete(
+  adminControllerObject.deleteStop
+);
+
+router.route("/admin/crewMember").post(
+  adminControllerObject.pushCrewMember
+);
+router.route("/admin/crewMember/:crewMemberId").delete(
+  adminControllerObject.deleteCrewMember
+)
 
 
-
+router.route("/admin/ship/:shipId/travelPlan/:travelPlanId").post(
+  adminControllerObject.linkShipTravelPlan
+)
+router.route("/admin/travelPlan/:travelPlanId/stop/:stopId").post(
+  adminControllerObject.linkTravelPlanStop
+)
 
 
 
